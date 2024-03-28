@@ -16,15 +16,16 @@ def commitFile():
         commitMessage = userMsg()
         os.system("git commit -m" + f'"{commitMessage}"')
 
-# creating a function to store default commit message and user generated message
-def userMsg():
-    inputMsg = input("Please enter a message: \n")
-    return inputMsg
 
 def pushFile():
     print("Executing git push. . . ")
     os.system("git push")
     os.system("git status")
+
+# creating a function to store default commit message and user generated message
+def userMsg():
+    inputMsg = input("Please enter a message: \n")
+    return inputMsg
         
 # beginning of script / retrieving git status
 print("Executing git status. . . ")
@@ -46,7 +47,16 @@ if userCommit != "y":
 else:
    commitFile() 
 
-#ask user if they would like to git push
+# creating an option for user to use git -f
+userForce = input("Would you like to -f force command line. ")
+if userForce != "y":
+    print("ignoring -f")
+else:
+    print("Executing git -f [force]. . .")
+    os.system("git push -f")
+
+
+# ask user if they would like to git push
 userPush = input("Would you like to push? (y/n)\n")
 if userPush != "y":
     print("Goodbye. . .")
