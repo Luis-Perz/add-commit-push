@@ -1,49 +1,40 @@
 import os
-
-def printAdd(userInput): 
-    if userInput == "Y" or "y":
-        print("git add")
+def addFile(userInput): 
+    if userInput != "y":
+        exit      
+    else:
+        print("Executing git add. . . ")
         os.system("git add -A")
-    elif userInput == "N" or "n":
-        exit
-    else:
-        print("That's not a proper command")
-        printAdd(input("Would you like to stage files for commit?"))
+        os.system("git status")
 
-def printComm(userInput):
-    if userInput == "Y" or "y":
-        msgOption = input("Would like to enter add a message? Y or N?")
-        if msgOption == "Y" or "y":
-            userMsg = input("Enter your message")
-            print("git commit")
-            os.system(f"git commit -m '{userMsg}'")
-        elif msgOption == "N" or "n":
-            print("git commit")
-            os.system("git commit")
+def commitFile(userInput):
+    if userInput != "y":
+        exit      
+    else:
+        print("Executing git commit. . . ")
+        msgOption = input("Would you like to add a message?")
+        if msgOption != 'y':
+            os.system("git commit -m 'File Updated'")
         else:
-            print("That's not a proper command.")
-            printComm(input("Would you like to execute Git commit? Y or N?"))
-    elif userInput == "N" or "n":
+            commitMessage = userMsg()
+            os.system("git commit -m'" + commitMessage + "'")
+
+def userMsg():
+    inputMsg = input("Please enter a message: \n")
+    return inputMsg
+
+def pushFile(userInput):
+    if userInput != "y":
         exit
     else:
-        print("That's not a proper command.")
-        printComm()
-
-def printPush(userInput):
-    if userInput == "Y" or "y":
-        print("git push")
+        print("Executing git push. . . ")
         os.system("git push")
-    elif userInput == "N" or "n":
-        exit
-    else:
-        print("That's not a proper command.")
-        printPush(input("Would you like to execute Git push? Y or N?"))
-
+        os.system("git status")
+        
 
 print("Executing git status. . . ")
 os.system("git status")
 
-printAdd(input("Would you like to stage files for commit?"))
-printComm(input("Would you like to execute Git commit? Y or N?"))
-printPush(input("Would you like to execute Git push? Y or N?"))
- 
+addFile(input("Would you like to stage files for commit?"))
+commitFile(input("Would you like to commit changes?"))
+pushFile("Would you like to push?")
