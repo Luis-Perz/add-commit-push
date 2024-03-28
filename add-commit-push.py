@@ -54,6 +54,9 @@ if userForce != "y":
 else:
     print("Executing git -f [force]. . .")
     os.system("git push -f")
+    os.system("git status")
+    print("Goodbye. . .")
+    exit()
 
 
 # ask user if they would like to git push
