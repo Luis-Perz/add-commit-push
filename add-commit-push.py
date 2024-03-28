@@ -53,6 +53,3 @@ if userPush != "y":
     exit()
 else:
    pushFile() 
-
-
-print("Hello World")
