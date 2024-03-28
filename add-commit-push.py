@@ -21,13 +21,10 @@ def userMsg():
     inputMsg = input("Please enter a message: \n")
     return inputMsg
 
-def pushFile(userInput):
-    if userInput != "y":
-        exit()
-    else:
-        print("Executing git push. . . ")
-        os.system("git push")
-        os.system("git status")
+def pushFile():
+    print("Executing git push. . . ")
+    os.system("git push")
+    os.system("git status")
         
 # beginning of script / retrieving git status
 print("Executing git status. . . ")
@@ -56,5 +53,3 @@ if userPush != "y":
     exit()
 else:
    pushFile() 
-
-print("Hello world")
