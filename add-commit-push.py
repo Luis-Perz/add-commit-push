@@ -9,12 +9,12 @@ def addFile():
 
 def commitFile():
     print("Executing git commit. . . ")
-    msgOption = input("Would you like to add a message?")
+    msgOption = input("Would you like to add a message? (y/n)\n")
     if msgOption != "y":
         os.system('git commit -m "File Updated"')
     else:
         commitMessage = userMsg()
-        os.system("git commit -m'" + commitMessage + "'")
+        os.system("git commit -m" + f'"{commitMessage}"')
 
 # creating a function to store default commit message and user generated message
 def userMsg():
@@ -31,7 +31,7 @@ print("Executing git status. . . ")
 os.system("git status")
 
 # ask user if they would like to add file(s)
-userAdd = input("Would you like to stage files for commit?")
+userAdd = input("Would you like to stage files for commit? (y/n)\n")
 if userAdd != "y":
      print("Goodbye. . .")
      exit()
@@ -39,7 +39,7 @@ else:
     addFile()
 
 # ask user if they would like to commit changes
-userCommit = input("Would you like to commit changes?")
+userCommit = input("Would you like to commit changes? (y/n)\n")
 if userCommit != "y":
     print("Goodbye. . .")
     exit()
@@ -47,9 +47,12 @@ else:
    commitFile() 
 
 #ask user if they would like to git push
-userPush = input("Would you like to push?")
+userPush = input("Would you like to push? (y/n)\n")
 if userPush != "y":
     print("Goodbye. . .")
     exit()
 else:
    pushFile() 
+
+
+print("Hello World")
